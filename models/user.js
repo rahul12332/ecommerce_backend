@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const {productSchema} = require("./productmodel")
+const addressSchema = require('./userAddress');
 
 const userSchema = mongoose.Schema({
 
@@ -25,15 +27,25 @@ const userSchema = mongoose.Schema({
         },
     },
 
-    address:{
-        type: String,
-        default:'',
-    },
+    address:[addressSchema],
 
     type:{
         type : String,
         default:'user'
-    }
+    },
+
+    cart:[
+
+        {
+            product:productSchema,
+            quantity:{
+                type:Number,
+                required: true,
+            }
+        }
+    ]
+
+
     
     
 });

@@ -6,10 +6,16 @@ const connectDB = require('./DB/db'); // Adjust the path as needed
 
 
 const authRouter = require("./routes/auth");
+const authRouter2 = require("./routes/admin");
+const productRouter = require("./routes/product");
+const userRouter = require('./routes/user')
 connectDB();
 
 app.use(express.json());
 app.use(authRouter);
+app.use(authRouter2);
+app.use(productRouter);
+app.use(userRouter);
 
 
 
